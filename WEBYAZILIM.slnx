@@ -1,0 +1,14 @@
+<Solution>
+  <Project Path="01_MVC/01_MVC.csproj" />
+  <Project Path="02_RazorSyntax/02_RazorSyntax.csproj" Id="e494ea8c-a924-4e8d-850d-ee124f8bc64e" />
+  <Project Path="03_ControllerToView/03_ControllerToView.csproj" Id="59835d07-a8ed-4d85-9ce7-87d3fe763841" />
+  <Project Path="04_ViewToController/04_ViewToController.csproj" Id="c22e4cf1-13a7-4322-b2f5-a6888d755f9d" />
+  <Project Path="05_TempData_ViewBag_ViewData/05_TempData_ViewBag_ViewData.csproj" Id="b241d944-03c1-48ce-845d-9326c998c0d4" />
+  <Project Path="06_LayoutPage/06_LayoutPage.csproj" Id="6b518376-1436-4709-94ff-520866ff1cf1" />
+  <Project Path="07_LayoutPage_2/07_LayoutPage_2.csproj" Id="a745ab5f-e58b-44a4-af8c-9b77824ebc7a" />
+  <Project Path="08_LayoutPage_3/08_LayoutPage_3.csproj" Id="57cba8bc-0c30-4fbc-bd66-c7ee8bdae5a1" />
+  <Project Path="09_LayoutPage_4/09_LayoutPage_4.csproj" Id="f75af5a5-c36d-46a9-a4d2-66286f81153d" />
+  <Project Path="10_Render_Nested_Section/10_Render_Nested_Section.csproj" Id="aea6457c-bbf3-4646-9125-3b115b265d21" />
+  <Project Path="11_Fluent_Validation/11_Fluent_Validation.csproj" Id="3d222efd-283c-47e2-999f-fbcdc61ec30a" />
+  <Project Path="12_Dependency_Injection/12_Dependency_Injection.csproj" Id="ece59be4-8cca-4d21-9091-12860fe1c443" />
+</Solution>

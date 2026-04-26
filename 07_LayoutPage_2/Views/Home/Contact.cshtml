@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "İletişim Bilgileri";
+}
+
+<h2>@ViewData["Title"]</h2>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <p>Projeleriniz, entegrasyon fikirleriniz veya eğitim içerikleri hakkında bize ulaşabilirsiniz.</p>
+
+        <ul class="list-group">
+            <li class="list-group-item"><strong>E-posta:</strong> egitim@ornekdomain.com</li>
+            <li class="list-group-item"><strong>Telefon:</strong> +90 555 123 45 67</li>
+            <li class="list-group-item"><strong>Adres:</strong> Yazılım Vadisi, Teknoloji Sk.</li>
+        </ul>
+    </div>
+
+    <div class="col-md-6">
+        <form>
+            <div class="mb-3">
+                <label class="form-label">Adınız Soyadınız</label>
+                <input type="text" class="form-control" placeholder="Adınızı giriniz">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Mesajınız</label>
+                <textarea class="form-control" rows="3" placeholder="Mesajınızı buraya yazabilirsiniz..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Gönder</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+﻿@model slider
+<section class="home_bg hb_height" style="background-image: url(../../eduleb/assets/img/bg/home-bg.jpg);  background-size:cover; background-position: center center;">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-sm-12 col-xs-12">
+				<div class="hero-text ht_top">
+					<h1><span>@Model.Title1</span> @Model.Title2</h1>
+					<p>@Model.Description</p>
+				</div>
+				<div class="home_sb">
+					<form action="#" class="banner_subs">
+						<input type="text" class="form-control home_si" placeholder="Search your course here" required="required">
+						<button type="button" class="subscribe__btn">Search <i class="fa fa-paper-plane-o"></i></button>
+					</form>
+				</div>
+			</div><!--- END COL -->
+			<div class="col-lg-6 col-sm-12 col-xs-12">
+				<div class="hero-text-img">
+					<img src="~/eduleb/assets/img/@Model.ImageUrl" class="img-fluid" alt="" />
+					<div class="home_ps">
+						<span class="ti-user"></span>
+						<h2>4500+</h2>
+						<p>Active student</p>
+					</div>
+				</div>
+			</div><!--- END COL -->
+		</div><!--- END ROW -->
+	</div><!--- END CONTAINER -->
+</section>

@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!--Razor Syntax: Belirtilen sayfa içerisinde html kodlar arasında C# kodu yazabilmemizi sağlar.
+    @@ ifadesi ile tanımlanır.
+
+-->
+
+@{
+    string ad = "Altan Emre Demirci";
+    int sayi = 5;
+    int sayi2 = 10;
+
+    List<string> adlar = new List<string>() { "Altan", "Uras", "Kerem", "Kıvanç" };
+}
+
+<h1>@ad</h1>
+<h2>@(sayi+sayi2)</h2>
+
+@if (sayi > 6)
+{
+    <h1>Sayi 6'dan büyüktür'</h1>
+}
+else
+{
+    <h1>Sayi 6'dan küçüktür</h1>
+}
+
+@foreach(string item in adlar)
+{
+    <h2>@item</h2>
+}
+

@@ -1,0 +1,17 @@
+﻿@using _03_ControllerToView;
+@model Product;
+@{
+    ViewData["Title"] = "Home Page";
+}
+<!--Bütün static dosyalar(css,js,images) wwwroot klasörü altına koyulur.-->
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <div class="card" style="width: 18rem;">
+        <img src="~/img/@Model.ImageUrl" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">@Model.Name</h5>
+            <p class="card-text">@Model.Price</p>
+            <a href="#" class="btn btn-primary">@Model.Stock</a>
+        </div>
+    </div>
+</div>

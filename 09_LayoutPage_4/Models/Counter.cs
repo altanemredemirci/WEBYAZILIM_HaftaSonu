@@ -1,0 +1,10 @@
+﻿namespace _09_LayoutPage_4.Models
+{
+    public class Counter
+    {
+        public int Id { get; set; }
+        public string Icon { get; set; }
+        public int Count { get; set; }
+        public string Title { get; set; }
+    }
+}

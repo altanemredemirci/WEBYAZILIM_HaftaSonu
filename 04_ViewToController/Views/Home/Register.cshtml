@@ -1,0 +1,34 @@
+﻿@model User
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h1>Register</h1>
+
+@* <form action="/Home/Register">*@ 
+
+<form asp-action="Register" asp-controller="Home"> <!--default olarak post method alır.-->
+    <div class="mb-3">
+        <label>Ad:</label>
+        @* <input type="text" class="form-control" name="name" /> *@
+        <input asp-for="Name" class="form-control" />
+        <br />
+        <label>Soyad:</label>
+        <input type="text" class="form-control" name="surname" />
+        <br />
+        <label>Kullanıcı Adı:</label>
+        <input type="text" class="form-control" name="username">
+        <br />
+        <label>Şifre:</label>
+        <input type="password" class="form-control" name="password" />
+    </div>
+    <input type="submit" class="btn btn-primary" value="Kayıt Ol" />
+</form>
+
+<!--Product
+    Name
+    Price
+    Stock
+
+-->
+

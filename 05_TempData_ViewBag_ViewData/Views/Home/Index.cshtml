@@ -1,0 +1,10 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+   @*  <h1>@ViewData["Message"]</h1> 
+    <h1>@ViewBag.Mesaj</h1> *@
+    <h1>@TempData["Mesaj"]</h1>
+    <a href="/Home/About">Hakkımızda</a>
+</div>

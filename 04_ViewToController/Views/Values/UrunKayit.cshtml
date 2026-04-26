@@ -1,0 +1,30 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "UrunKayit";
+}
+
+<h1>UrunKayit</h1>
+<form asp-action="UrunKayit" asp-controller="Values" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="mb-3">
+        <label>Ad:</label>       
+        <input asp-for="UrunAdi" class="form-control" /> 
+        <span asp-validation-for="UrunAdi" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label>Açıklama:</label>
+        @* <input asp-for="Aciklama" class="form-control" /> *@
+        <input type="text" name="Aciklama" class="form-control" value="@Model.Aciklama" />
+    </div>
+
+    <div class="mb-3">
+        <label>Fiyat:</label>
+        <input asp-for="UrunFiyat" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Stok:</label>
+        <input asp-for="UrunStok" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-success">Ürün Oluştur</button>
+</form>
