@@ -11,4 +11,5 @@
   <Project Path="10_Render_Nested_Section/10_Render_Nested_Section.csproj" Id="aea6457c-bbf3-4646-9125-3b115b265d21" />
   <Project Path="11_Fluent_Validation/11_Fluent_Validation.csproj" Id="3d222efd-283c-47e2-999f-fbcdc61ec30a" />
   <Project Path="12_Dependency_Injection/12_Dependency_Injection.csproj" Id="ece59be4-8cca-4d21-9091-12860fe1c443" />
+  <Project Path="12_Dependency_Injection_2/12_Dependency_Injection_2.csproj" Id="baff69de-c7d8-4bf1-bdb3-18149c4ea8d0" />
 </Solution>

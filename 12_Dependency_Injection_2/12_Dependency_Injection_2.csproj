@@ -4,7 +4,7 @@
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>_12_Dependency_Injection</RootNamespace>
+    <RootNamespace>_12_Dependency_Injection_2</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

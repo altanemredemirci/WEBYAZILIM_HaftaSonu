@@ -1,4 +1,5 @@
 using _12_Dependency_Injection.Models;
+using _12_Dependency_Injection.Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -13,8 +14,17 @@ namespace _12_Dependency_Injection.Controllers
         Student classının temel metotları vardır. Insert,Update,Delete,List,Find,List(Expression)
 
          */
+
+        private readonly IStudentService _studentService;
+
+        public HomeController(IStudentService studentService)
+        {
+            _studentService = studentService;
+        }
+
         public IActionResult Index()
         {
+            var students = _studentService.GetStudents();
             return View();
         }
 

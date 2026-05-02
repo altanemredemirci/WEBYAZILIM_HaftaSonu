@@ -1,7 +1,13 @@
+using _12_Dependency_Injection.Services.Abstract;
+using _12_Dependency_Injection.Services.Concrete;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<IStudentService, MySQLStudentService>();
+
 
 var app = builder.Build();
 

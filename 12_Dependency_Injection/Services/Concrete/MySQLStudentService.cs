@@ -1,13 +1,10 @@
-﻿using _12_Dependency_Injection.Context;
-using _12_Dependency_Injection.Models;
+﻿using _12_Dependency_Injection.Models;
 using _12_Dependency_Injection.Services.Abstract;
 
 namespace _12_Dependency_Injection.Services.Concrete
 {
-    public class StudentService : IStudentService
+    public class MySQLStudentService : IStudentService
     {
-        DataContext context = new DataContext();
-
         public void Create()
         {
             throw new NotImplementedException();
@@ -25,9 +22,7 @@ namespace _12_Dependency_Injection.Services.Concrete
 
         public List<Student> GetStudents()
         {
-            var students = context.Student.ToList();
-
-            return students;
+            throw new NotImplementedException();
         }
 
         public void Update()
