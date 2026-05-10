@@ -12,4 +12,6 @@
   <Project Path="11_Fluent_Validation/11_Fluent_Validation.csproj" Id="3d222efd-283c-47e2-999f-fbcdc61ec30a" />
   <Project Path="12_Dependency_Injection/12_Dependency_Injection.csproj" Id="ece59be4-8cca-4d21-9091-12860fe1c443" />
   <Project Path="12_Dependency_Injection_2/12_Dependency_Injection_2.csproj" Id="baff69de-c7d8-4bf1-bdb3-18149c4ea8d0" />
+  <Project Path="13_State_Management/13_State_Management.csproj" Id="6de8dfa8-13b9-45ec-a7e0-075108be4b00" />
+  <Project Path="13_State_Management_2/13_State_Management_2.csproj" Id="f403c2e4-39bb-4c8f-bc1a-7ed6d5ab2756" />
 </Solution>

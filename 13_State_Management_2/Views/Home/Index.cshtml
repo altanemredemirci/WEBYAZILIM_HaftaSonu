@@ -1,0 +1,126 @@
+﻿@model List<CartItem>
+
+@{
+    ViewData["Title"] = "Alışveriş Sepeti State Management";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">ASP.NET Core State Management (Session & TempData)</h2>
+
+    <!-- 1. BÖLÜM: TEMPDATA BİLDİRİMLERİ -->
+    <!-- Öğrencilere TempData'nın sayfayı yenileyince (veya başka sayfaya geçince) nasıl kaybolduğunu burada gösterebilirsiniz -->
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Başarılı!</strong> @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    @if (TempData["InfoMessage"] != null)
+    {
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+            <strong>Bilgi:</strong> @TempData["InfoMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="row">
+        <!-- 2. BÖLÜM: ÜRÜN LİSTESİ (SİMÜLASYON) -->
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Vitrin (Ürünler)</h4>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <!-- Ürün 1 -->
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <h5>Oyuncu Laptop</h5>
+                                <span class="text-muted">35.000 TL</span>
+                            </div>
+                            <!-- Form kullanarak POST işlemi yapıyoruz (Best Practice) -->
+                            <form asp-controller="Home" asp-action="AddToCart" method="post">
+                                <input type="hidden" name="id" value="1" />
+                                <input type="hidden" name="name" value="Oyuncu Laptop" />
+                                <input type="hidden" name="price" value="35000" />
+                                <button type="submit" class="btn btn-sm btn-success">+ Sepete Ekle</button>
+                            </form>
+                        </li>
+
+                        <!-- Ürün 2 -->
+                        <li class="list-group-item d-flex justify-content-between align-items-center mt-2">
+                            <div>
+                                <h5>Mekanik Klavye</h5>
+                                <span class="text-muted">2.500 TL</span>
+                            </div>
+                            <form asp-controller="Home" asp-action="AddToCart" method="post">
+                                <input type="hidden" name="id" value="2" />
+                                <input type="hidden" name="name" value="Mekanik Klavye" />
+                                <input type="hidden" name="price" value="2500" />
+                                <button type="submit" class="btn btn-sm btn-success">+ Sepete Ekle</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. BÖLÜM: KULLANICININ SEPETİ (SESSION'DAN GELEN VERİ) -->
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                    <h4 class="mb-0">Senin Sepetin (Session)</h4>
+
+                    @if (Model.Any())
+                    {
+                        <!-- Sadece sepette ürün varsa temizle butonu çıksın -->
+                        <a asp-controller="Shop" asp-action="ClearCart" class="btn btn-sm btn-danger">Sepeti Boşalt</a>
+                    }
+                </div>
+                <div class="card-body">
+
+                    @if (!Model.Any())
+                    {
+                        <div class="alert alert-warning text-center">
+                            Sepetinizde henüz ürün bulunmamaktadır. Web sunucusu şu an için sizi <strong>hatırlamıyor</strong>.
+                        </div>
+                    }
+                    else
+                    {
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Ürün</th>
+                                    <th>Adet</th>
+                                    <th>Fiyat</th>
+                                    <th>Toplam</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.ProductName</td>
+                                        <td>
+                                            <span class="badge bg-secondary">@item.Quantity</span>
+                                        </td>
+                                        <td>@item.Price.ToString("N2") ₺</td>
+                                        <td>@((item.Price * item.Quantity).ToString("N2")) ₺</td>
+                                    </tr>
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr class="table-info fw-bold">
+                                    <td colspan="3" class="text-end">Genel Toplam:</td>
+                                    <td>@Model.Sum(x => x.Price * x.Quantity).ToString("N2") ₺</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
