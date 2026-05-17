@@ -1,0 +1,127 @@
+﻿@model List<BlogPost>
+@{
+    ViewData["Title"] = "Action Filter Blog";
+}
+
+<div class="container mt-4">
+    <!-- Filter Bilgi Kartları -->
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card border-primary">
+                <div class="card-header bg-primary text-white">
+                    <i class="fas fa-list"></i> Log Filter
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Bu sayfa ziyareti loglandı</p>
+                    <small class="text-muted">Başlama: @ViewBag.ActionStartTime</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-success">
+                <div class="card-header bg-success text-white">
+                    <i class="fas fa-tachometer-alt"></i> Performance Filter
+                </div>
+                <div class="card-body">
+                    <p class="card-text">@ViewBag.PerformanceMessage</p>
+                    <small class="text-muted">Süre: @ViewBag.ExecutionTime ms</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-warning">
+                <div class="card-header bg-warning text-white">
+                    <i class="fas fa-shield-alt"></i> Authorization Filter
+                </div>
+                <div class="card-body">
+                    <p class="card-text">@ViewBag.AuthMessage</p>
+                    <small class="text-muted">Kullanıcı: @ViewBag.CurrentUser?.Username</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Başlık -->
+    <div class="jumbotron bg-light p-4 rounded mb-4">
+        <h1 class="display-4">🎯 Action Filter Blog</h1>
+        <p class="lead">ASP.NET Core MVC 8 ile Action Filter örnekleri</p>
+        <hr class="my-4">
+        <p>@ViewBag.FilterInfo</p>
+        <p class="text-info">@ViewBag.MiddlewareInfo</p>
+    </div>
+
+    <!-- Blog Yazıları -->
+    <div class="row">
+        @foreach (var post in Model)
+        {
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-header d-flex justify-content-between">
+                        <span class="badge badge-primary">@post.Author</span>
+                        <small class="text-muted">@post.CreatedDate.ToString("dd.MM.yyyy")</small>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">@post.Title</h5>
+                        <p class="card-text">@(post.Content.Length > 150 ? post.Content.Substring(0, 150) + "..." : post.Content)</p>
+
+                        <!-- Etiketler -->
+                        <div class="mb-2">
+                            @foreach (var tag in post.Tags)
+                            {
+                                <span class="badge badge-secondary me-1">#@tag</span>
+                            }
+                        </div>
+
+                        <!-- İstatistikler -->
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="fas fa-eye"></i> @post.ViewCount görüntülenme
+                            </small>
+                            <a href="@Url.Action("Details", new { id = post.Id })" class="btn btn-primary btn-sm">
+                                Devamını Oku
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Action Filter Açıklaması -->
+    <div class="card mt-4">
+        <div class="card-header">
+            <h5><i class="fas fa-info-circle"></i> Action Filter vs Middleware</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <h6 class="text-primary">🔧 Action Filter</h6>
+                    <ul>
+                        <li>Sadece MVC Action'larında çalışır</li>
+                        <li>ActionContext'e erişim var</li>
+                        <li>ModelState, ViewBag kullanabilir</li>
+                        <li>Attribute olarak kullanılabilir</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="text-success">⚙️ Middleware</h6>
+                    <ul>
+                        <li>Tüm HTTP isteklerinde çalışır</li>
+                        <li>Sadece HttpContext'e erişim</li>
+                        <li>Pipeline'da sıralı çalışır</li>
+                        <li>Program.cs'de yapılandırılır</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .badge { margin-right: 5px; }
+    .card { transition: transform 0.2s; }
+    .card:hover { transform: translateY(-5px); }
+    .jumbotron { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+</style>
+
+

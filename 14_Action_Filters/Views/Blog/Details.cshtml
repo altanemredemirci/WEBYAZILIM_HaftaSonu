@@ -1,0 +1,158 @@
+﻿@model BlogPost
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="container mt-4">
+    <!-- Filter Status Bar -->
+    <div class="alert alert-info" role="alert">
+        <i class="fas fa-filter"></i> <strong>Filter Status:</strong> @ViewBag.FilterDemo
+        <br>
+        <small>Performans: @ViewBag.ExecutionTime ms | @ViewBag.PerformanceMessage</small>
+    </div>
+
+    <!-- Blog Post -->
+    <article class="card">
+        <div class="card-header">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h1 class="h3 mb-0">@Model.Title</h1>
+                </div>
+                <div class="col-md-4 text-md-end">
+                    <span class="badge badge-primary">@Model.Author</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <!-- Meta Bilgiler -->
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <small class="text-muted">
+                        <i class="fas fa-calendar"></i> @Model.CreatedDate.ToString("dd MMMM yyyy, HH:mm")
+                    </small>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <small class="text-muted">
+                        <i class="fas fa-eye"></i> @Model.ViewCount görüntülenme
+                    </small>
+                </div>
+            </div>
+
+            <!-- Etiketler -->
+            <div class="mb-3">
+                @foreach (var tag in Model.Tags)
+                {
+                    <span class="badge badge-secondary me-1">#@tag</span>
+                }
+            </div>
+
+            <!-- İçerik -->
+            <div class="content">
+                @Html.Raw(Model.Content.Replace("\n", "<br>"))
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="@Url.Action("Index")" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Geri Dön
+                    </a>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <button class="btn btn-outline-primary btn-sm" onclick="sharePost()">
+                        <i class="fas fa-share"></i> Paylaş
+                    </button>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- Action Filter Demonstration -->
+    <div class="card mt-4">
+        <div class="card-header bg-dark text-white">
+            <h5><i class="fas fa-cogs"></i> Bu Sayfada Çalışan Action Filter'lar</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="text-center p-3 border rounded">
+                        <i class="fas fa-list fa-2x text-primary mb-2"></i>
+                        <h6>Log Filter</h6>
+                        <p class="small">Sayfa ziyareti loglandı</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center p-3 border rounded">
+                        <i class="fas fa-tachometer-alt fa-2x text-success mb-2"></i>
+                        <h6>Performance Filter</h6>
+                        <p class="small">Yükleme süresi: @ViewBag.ExecutionTime ms</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center p-3 border rounded">
+                        <i class="fas fa-shield-alt fa-2x text-warning mb-2"></i>
+                        <h6>Authorization Filter</h6>
+                        <p class="small">Erişim yetkisi kontrol edildi</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function sharePost() {
+        if (navigator.share) {
+            navigator.share({
+                title: '@Model.Title',
+                text: '@Model.Title - @Model.Author tarafından yazıldı',
+                url: window.location.href
+            });
+        } else {
+            // Fallback
+            navigator.clipboard.writeText(window.location.href);
+            alert('Link panoya kopyalandı!');
+        }
+    }
+</script>
+
+<style>
+    .content {
+        line-height: 1.8;
+        font-size: 1.1em;
+    }
+
+        .content h1, .content h2, .content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .content code {
+            background-color: #f8f9fa;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .content table {
+            width: 100%;
+            margin: 1rem 0;
+            border-collapse: collapse;
+        }
+
+            .content table th,
+            .content table td {
+                border: 1px solid #dee2e6;
+                padding: 8px 12px;
+                text-align: left;
+            }
+
+            .content table th {
+                background-color: #f8f9fa;
+                font-weight: bold;
+            }
+</style>
+
+

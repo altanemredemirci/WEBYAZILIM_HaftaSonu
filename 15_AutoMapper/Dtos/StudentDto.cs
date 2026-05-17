@@ -1,0 +1,12 @@
+﻿namespace _15_AutoMapper.Dtos
+{
+    public class StudentDto //DTO:Data Transfer Object
+    {
+        public int Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+        public string PhoneNumber { get; set; }
+        public bool  IsActive { get; set; }
+    }
+}

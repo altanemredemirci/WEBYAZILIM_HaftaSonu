@@ -14,4 +14,7 @@
   <Project Path="12_Dependency_Injection_2/12_Dependency_Injection_2.csproj" Id="baff69de-c7d8-4bf1-bdb3-18149c4ea8d0" />
   <Project Path="13_State_Management/13_State_Management.csproj" Id="6de8dfa8-13b9-45ec-a7e0-075108be4b00" />
   <Project Path="13_State_Management_2/13_State_Management_2.csproj" Id="f403c2e4-39bb-4c8f-bc1a-7ed6d5ab2756" />
+  <Project Path="13_State_Management_3/13_State_Management_3.csproj" Id="cb26054d-b04a-496e-a666-483f71c561ac" />
+  <Project Path="14_Action_Filters/14_Action_Filters.csproj" Id="b61a4dd4-ee82-41d9-91a9-9d9c7d01239d" />
+  <Project Path="15_AutoMapper/15_AutoMapper.csproj" Id="46860d7e-8dbb-4104-9517-338980cfbc83" />
 </Solution>
