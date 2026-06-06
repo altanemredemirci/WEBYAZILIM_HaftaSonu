@@ -24,6 +24,6 @@ namespace _15_AutoMapper.Models
         public bool IsActive { get; set; }
 
         //Veritabanında tuttuğumuz ama kullanıcıya göstermek istemediğimiz hasas bilgi
-        public string InternalNotes { get; set; }
+        public string? InternalNotes { get; set; }
     }
 }

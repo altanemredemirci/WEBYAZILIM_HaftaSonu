@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 
 namespace _12_Dependency_Injection_2.ProductService.Concrete
 {
-    public class MySqlProductService : IProductService
+    public class MySqlProductService //: IProductService
     {
         public void Create(Product p)
         {

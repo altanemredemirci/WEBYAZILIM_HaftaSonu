@@ -8,7 +8,7 @@ builder.Services.AddControllersWithViews();
 
 //Dependency Injection
 //builder.Services.AddScoped<IProductService, ProductService>();
-builder.Services.AddScoped<IProductService, MySqlProductService>();
+//builder.Services.AddScoped<IProductService, MySqlProductService>();
 
 /*
   Net Core Dependency Injedction'da servislerin ömrünü(lifecycle) belirlemek için üç ana yöntem vardır.

@@ -1,7 +1,17 @@
+using _15_AutoMapper.Profiles;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//AutoMapper: .Net Core projelerinde veri transferi nesneleri(DTO) domain modelleerine ve tersi işlemleri kolayca yapmamıza olanak sağlar.
+//AutoMapper service eklendi.
+builder.Services.AddAutoMapper(opt =>
+{
+    opt.AddProfile<StudentProfile>();
+});
+
 
 var app = builder.Build();
 

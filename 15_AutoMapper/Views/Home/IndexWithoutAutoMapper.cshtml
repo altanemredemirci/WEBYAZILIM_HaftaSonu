@@ -1,0 +1,137 @@
+﻿@model List<StudentDisplayViewModel>
+@{
+    ViewData["Title"] = "IndexWithoutAutoMapper";
+}
+
+<div class="container">
+    <div class="alert alert-warning">
+        <h4><i class="fas fa-exclamation-triangle"></i> AutoMapper Kullanılmadan Oluşturulmuş Sayfa</h4>
+        <p>Bu sayfa AutoMapper kullanmadan, manuel mapping ile oluşturulmuştur. Controller kodunu karşılaştırın!</p>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <h2>Öğrenci Listesi (Manuel Mapping)</h2>
+        </div>
+        <div class="col-md-6 text-end">
+            <a asp-action="Index" class="btn btn-success">
+                <i class="fas fa-magic"></i> AutoMapper'lı Versiyona Geç
+            </a>
+            <a asp-action="CreateStudent" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Yeni Öğrenci
+            </a>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5><i class="fas fa-code"></i> Kod Karşılaştırması</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6 class="text-success">AutoMapper İle (Temiz Kod)</h6>
+                            <pre class="bg-light p-2"><code>// Controller'da sadece 1 satır
+var viewModels = _mapper.Map&lt;List&lt;StudentDisplayViewModel&gt;&gt;(_students);</code></pre>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="text-danger">AutoMapper Olmadan (Karmaşık Kod)</h6>
+                            <pre class="bg-light p-2"><code>// Controller'da 10+ satır kod
+var viewModels = _students.Select(s => new StudentDisplayViewModel
+{
+    Id = s.Id,
+    FullName = $"{s.FirstName} {s.LastName}",
+    Email = s.Email,
+    PhoneNumber = s.PhoneNumber,
+    Age = CalculateAge(s.DateOfBirth),
+    Address = s.Address,
+    StatusText = s.IsActive ? "Aktif" : "Pasif",
+    CreatedDateFormatted = s.CreatedDate.ToString("dd.MM.yyyy")
+}).ToList();</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Ad Soyad</th>
+                <th>Email</th>
+                <th>Yaş</th>
+                <th>Telefon</th>
+                <th>Durum</th>
+                <th>Kayıt Tarihi</th>
+                <th>İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var student in Model)
+            {
+                <tr>
+                    <td>@student.FullName</td>
+                    <td>@student.Email</td>
+                    <td>@student.Age</td>
+                    <td>@student.PhoneNumber</td>
+                    <td>
+                        <span class="badge @(student.StatusText == "Aktif" ? "bg-success" : "bg-secondary")">
+                            @student.StatusText
+                        </span>
+                    </td>
+                    <td>@student.CreatedDateFormatted</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@student.Id" class="btn btn-sm btn-info">
+                            <i class="fas fa-eye"></i> Detay
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <div class="card border-success">
+                <div class="card-header bg-success text-white">
+                    <h5><i class="fas fa-lightbulb"></i> AutoMapper'ın Faydaları</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="text-center">
+                                <i class="fas fa-code fa-2x text-primary mb-2"></i>
+                                <h6>Kod Azaltma</h6>
+                                <p class="small">10+ satır kod yerine 1 satır</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="text-center">
+                                <i class="fas fa-shield-alt fa-2x text-success mb-2"></i>
+                                <h6>Güvenlik</h6>
+                                <p class="small">Hassas alanları otomatik gizler</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="text-center">
+                                <i class="fas fa-wrench fa-2x text-warning mb-2"></i>
+                                <h6>Bakım</h6>
+                                <p class="small">Mapping kuralları tek yerde</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="text-center">
+                                <i class="fas fa-tachometer-alt fa-2x text-info mb-2"></i>
+                                <h6>Performans</h6>
+                                <p class="small">Optimize edilmiş dönüşümler</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
