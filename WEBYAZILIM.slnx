@@ -17,4 +17,5 @@
   <Project Path="13_State_Management_3/13_State_Management_3.csproj" Id="cb26054d-b04a-496e-a666-483f71c561ac" />
   <Project Path="14_Action_Filters/14_Action_Filters.csproj" Id="b61a4dd4-ee82-41d9-91a9-9d9c7d01239d" />
   <Project Path="15_AutoMapper/15_AutoMapper.csproj" Id="46860d7e-8dbb-4104-9517-338980cfbc83" />
+  <Project Path="16_WebAPI/16_WebAPI.csproj" Id="982566fe-7941-4aee-b6ca-b425610a682b" />
 </Solution>
