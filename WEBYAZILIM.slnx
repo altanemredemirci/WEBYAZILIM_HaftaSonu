@@ -19,4 +19,5 @@
   <Project Path="15_AutoMapper/15_AutoMapper.csproj" Id="46860d7e-8dbb-4104-9517-338980cfbc83" />
   <Project Path="16_WebAPI/16_WebAPI.csproj" Id="982566fe-7941-4aee-b6ca-b425610a682b" />
   <Project Path="18_WebAPI/18_WebAPI.csproj" Id="9125aa0d-46df-47a9-9cc3-1ffa2fb4efae" />
+  <Project Path="19_Identity/19_Identity.csproj" Id="c396319a-3110-47e2-b5b1-6bef61df812a" />
 </Solution>
